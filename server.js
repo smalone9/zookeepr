@@ -51,12 +51,13 @@ function filterByQuery(query, animalsArray) {
     // return the filtered results:
     return filteredResults;
   };
+
 function findById(id, animalsArray) {
     const result = animalsArray.filter(animal => animal.id === id)[0];
     return result;
   };
 
-  function createNewAnimal(body, animalsArray) {
+function createNewAnimal(body, animalsArray) {
     const animal = body;
     animalsArray.push(animal);
     fs.writeFileSync(
@@ -66,7 +67,7 @@ function findById(id, animalsArray) {
     return animal;
   };
 
-  function validateAnimal(animal) {
+ function validateAnimal(animal) {
     if (!animal.name || typeof animal.name !== 'string') {
       return false;
     }
@@ -89,6 +90,7 @@ app.get('/api/animals', (req, res) => {
     }
     res.json(results);
   });
+
 app.get('/api/animals/:id', (req, res) => {
     const result = findById(req.params.id, animals);
     if (result) {
@@ -97,10 +99,7 @@ app.get('/api/animals/:id', (req, res) => {
         res.send(404);
       }
   });
-// chain listen method
-app.listen(PORT, () => {
-    console.log(`API server now on port ${PORT}!`);
-  });
+
 // add animals to catalog
 app.post('/api/animals', (req, res) => {
   // set id based on what the next index of the array will be
@@ -113,4 +112,8 @@ app.post('/api/animals', (req, res) => {
     const animal = createNewAnimal(req.body, animals);
     res.json(animal);
   }
+});
+// chain listen method
+app.listen(PORT, () => {
+  console.log(`API server now on port ${PORT}!`);
 });
