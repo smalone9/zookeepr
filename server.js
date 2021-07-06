@@ -113,6 +113,12 @@ app.post('/api/animals', (req, res) => {
     res.json(animal);
   }
 });
+
+// adding route to front end homepage
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/index.html'))
+});
+
 // chain listen method
 app.listen(PORT, () => {
   console.log(`API server now on port ${PORT}!`);
