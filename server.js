@@ -116,18 +116,24 @@ app.post('/api/animals', (req, res) => {
   }
 });
 
-// adding route to front end homepage
+// route to front end homepage
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, './public/index.html'))
 });
 
-// adding route to animals page
+// route to animals page
 app.get('/animals', (req, res) => {
   res.sendFile(path.join(__dirname, './public/animals.html'));
 });
 
+// route to zookeeper page
 app.get('/zookeepers', (req, res) => {
   res.sendFile(path.join(__dirname, './public/zookeepers.html'));
+});
+
+// wildcard route
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 // chain listen method
