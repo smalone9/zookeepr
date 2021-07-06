@@ -11,6 +11,8 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 // parse incoming JSON data
 app.use(express.json());
+// parse incoming front end files
+app.use(express.static('public'));
 
 // query function
 function filterByQuery(query, animalsArray) {
