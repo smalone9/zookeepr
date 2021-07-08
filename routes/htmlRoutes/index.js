@@ -21,9 +21,4 @@ router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../../public/index.html'));
   });
   
-  // chain listen method
-  router.listen(PORT, () => {
-    console.log(`API server now on port ${PORT}!`);
-  });
-
   module.exports = router;
