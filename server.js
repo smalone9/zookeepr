@@ -13,28 +13,3 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 // parse incoming JSON data
 app.use(express.json());
-
-// route to front end homepage
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/index.html'))
-});
-
-// route to animals page
-app.get('/animals', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/animals.html'));
-});
-
-// route to zookeeper page
-app.get('/zookeepers', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/zookeepers.html'));
-});
-
-// wildcard route
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/index.html'));
-});
-
-// chain listen method
-app.listen(PORT, () => {
-  console.log(`API server now on port ${PORT}!`);
-});
